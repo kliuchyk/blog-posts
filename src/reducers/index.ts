@@ -3,7 +3,6 @@ import {REQUEST_POSTS, SELECT_POST, RECEIVE_POSTS, CREATE_POST} from '../actions
 
 const initialState = {
   isFetching: false,
-  didInvalidate: false,
   items: [],
 };
 
