@@ -1,4 +1,5 @@
 import React from 'react';
+import {NavLink} from 'react-router-dom';
 import './Header.css';
 
 export const Header = () => {
@@ -7,8 +8,13 @@ export const Header = () => {
       <nav className="app-nav inner">
         <span className="app-name">Blog Posts</span>
         <ul>
-          <li className="app-nav-link">Latest Posts</li>
-          <li className="app-nav-link">Create new Post</li>
+          <NavLink to="/" className="app-nav-link">
+            Latest Posts
+          </NavLink>
+
+          <NavLink to="/new" className="app-nav-link">
+            Create new Post
+          </NavLink>
         </ul>
       </nav>
     </header>
