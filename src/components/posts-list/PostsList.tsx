@@ -14,17 +14,26 @@ export const PostsList = () => {
     dispatch(fetchPosts());
   }, [dispatch]);
 
-  const postLinks = isLoading
+  const deleteItem = (id: any) => {
+    fetch(`https://simple-blog-api.crew.red/posts/${id}`, {
+      method: 'DELETE',
+      headers: {'content-type': 'application/json'},
+    });
+  };
+
+  const postLinks = !posts.length
     ? 'Loading Blog Posts...'
     : posts.map((post: any) => (
-        <Link
-          to={`/posts/${post.id}`}
-          key={post.id}
-          className="post-link"
-          onClick={() => dispatch(selectPost(post.id))}
-        >
-          {post.title}
-        </Link>
+        <div key={post.id} className="post-item">
+          <Link
+            to={`/posts/${post.id}`}
+            className="post-link"
+            onClick={() => dispatch(selectPost(post.id))}
+          >
+            {post.title}
+          </Link>
+          <span onClick={() => deleteItem(post.id)}>DELETE</span>
+        </div>
       ));
 
   return (

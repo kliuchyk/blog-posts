@@ -2,6 +2,8 @@ import React from 'react';
 import Header from './components/header/Header';
 import PostsList from './components/posts-list/PostsList';
 import PostItem from './components/post-item/PostItem';
+import NewPostForm from './components/post-form/NewPostForm';
+
 import {Route, Switch} from 'react-router-dom';
 
 import './App.css';
@@ -13,6 +15,7 @@ const App: React.FC = () => {
       <main className="app-main inner">
         <Switch>
           <Route path="/" exact component={PostsList} />
+          <Route path="/posts/new" component={NewPostForm} />
           <Route path="/posts/:id" component={PostItem} />
         </Switch>
         <Switch />

@@ -42,3 +42,25 @@ export function fetchPosts() {
       .then((json) => dispatch(receivePosts(json)));
   };
 }
+
+export function sendPost(newPost: any) {
+  return function(dispatch: any) {
+    dispatch(requestPosts());
+
+    return fetch('https://simple-blog-api.crew.red/posts', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      method: 'post',
+      body: JSON.stringify(newPost),
+    })
+      .then(
+        (res) => res.json(),
+        (error) =>
+          console.log('An error occurred while "SUBMIT NEW POST" process.', error)
+      )
+      .then((json) => {
+        dispatch(receivePosts(json));
+      });
+  };
+}

@@ -1,3 +1,8 @@
+.post-item {
+  display: flex;
+  justify-content: space-between;
+}
+
 .post-link {
   display: block;
 }

@@ -12,7 +12,7 @@ export const Header = () => {
             Latest Posts
           </NavLink>
 
-          <NavLink to="/new" className="app-nav-link">
+          <NavLink to="/posts/new" className="app-nav-link">
             Create new Post
           </NavLink>
         </ul>
