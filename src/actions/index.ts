@@ -9,7 +9,7 @@ export function requestPosts() {
   };
 }
 
-export function selectPost(id: number) {
+export function selectPost(id: any) {
   return {
     type: SELECT_POST,
     id,

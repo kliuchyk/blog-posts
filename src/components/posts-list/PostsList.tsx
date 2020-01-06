@@ -1,7 +1,7 @@
 import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import PostItem from '../post-item/PostItem';
-import {fetchPosts} from '../../actions';
+import {fetchPosts, selectPost} from '../../actions';
+import {Link} from 'react-router-dom';
 import './PostsList.css';
 
 export const PostsList = () => {
@@ -14,14 +14,23 @@ export const PostsList = () => {
     dispatch(fetchPosts());
   }, [dispatch]);
 
-  const renderedList = isLoading
-    ? 'Loading from server...'
-    : posts.map((post: any) => <PostItem key={post.id} />);
+  const postLinks = isLoading
+    ? 'Loading Blog Posts...'
+    : posts.map((post: any) => (
+        <Link
+          to={`/posts/${post.id}`}
+          key={post.id}
+          className="post-link"
+          onClick={() => dispatch(selectPost(post.id))}
+        >
+          {post.title}
+        </Link>
+      ));
 
   return (
     <div>
       <h1>Post List</h1>
-      {renderedList}
+      {postLinks}
     </div>
   );
 };
